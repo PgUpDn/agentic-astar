@@ -131,44 +131,48 @@ Liaison 联络代理会分析请求、创建任务、发送给 CEO。CEO 会根�
 ## 完整 Agent 列表
 
 ### 董事会与管理层
-- **chairman** — Prof Tan Chorh Chuan（董事长）
-- **ceo** — Mr Beh Kian Teik（首席执行官）
+- **chairman** — 董事长
+- **ceo** — 首席执行官
 
 ### 副首席执行官 / 助理首席执行官
-- **dce_research** — Prof Andy Hor（副首席执行官，研究）
-- **dce_ie** — Prof Yeo Yee Chia（副首席执行官，创新与企业）
-- **dce_corporate** — Mr Suresh Sachi（副首席执行官，公司治理与法务总顾问）
-- **ace_bmrc** — Dr Lisa Ooi（助理首席执行官，生物医学研究理事会）
-- **ace_serc** — Prof Lim Keng Hui（助理首席执行官，科学与工程研究理事会）
-- **ace_ie** — Ms Irene Cheong（助理首席执行官，创新与企业 / 研究生院）
-- **ace_corp_dev** — Mr Glen Tan（助理首席执行官，企业发展）
-- **ace_infra** — Mr Haryanto Tan（助理首席执行官，基础设施）
+- **dce_research** — 副首席执行官，研究
+- **dce_ie** — 副首席执行官，创新与企业
+- **dce_corporate** — 副首席执行官，公司治理与法务总顾问
+- **ace_bmrc** — 助理首席执行官，生物医学研究理事会
+- **ace_serc** — 助理首席执行官，科学与工程研究理事会
+- **ace_ie** — 助理首席执行官，创新与企业 / 研究生院
+- **ace_corp_dev** — 助理首席执行官，企业发展
+- **ace_infra** — 助理首席执行官，基础设施
 
 ### BMRC 生物医学研究所
-- **dir_bii** — Dr Sebastian Maurer-Stroh（生物信息学研究所）
-- **dir_bti** — Dr Koh Boon Tong（生物加工技术研究所）
-- **dir_gis** — Dr Wan Yue（新加坡基因组研究所）
-- **dir_idl** — Prof Lisa Ng（传染病实验室）
-- **dir_ihdp** — Prof Johan Eriksson（人类发展与潜力研究所）
-- **dir_imcb** — A/Prof Su Xinyi（分子与细胞生物学研究所）
-- **dir_sign** — Prof Lam Kong Peng（新加坡免疫学网络）
-- **dir_sifbi** — Dr Sze Cotte-Tan（新加坡食品与生物技术创新研究所）
-- **dir_srl** — Prof Rachel Watson（皮肤研究实验室）
+- **dir_bii** — 生物信息学研究所
+- **dir_bti** — 生物加工技术研究所
+- **dir_gis** — 新加坡基因组研究所
+- **dir_idl** — 传染病实验室
+- **dir_ihdp** — 人类发展与潜力研究所
+- **dir_imcb** — 分子与细胞生物学研究所
+- **dir_sign** — 新加坡免疫学网络
+- **dir_sifbi** — 新加坡食品与生物技术创新研究所
+- **dir_srl** — 皮肤研究实验室
 
 ### SERC 科学与工程研究所
-- **dir_artc** — Dr David Low（先进再制造与技术中心 / SIMTech）
-- **dir_ime** — Mr Terence Gan（微电子研究所）
-- **dir_ihpc** — Dr Su Yi（高性能计算研究所）
-- **dir_imre** — Prof Loh Xian Jun（材料研究与工程研究所）
-- **dir_isce2** — Prof Reginald Tan（化学、能源与环境可持续发展研究所）
-- **dir_i2r** — Dr Sun Sumei（资讯通信研究所）
-- **dir_nmc** — Prof Gregory Goh（国家计量中心）
+- **dir_artc** — 先进再制造与技术中心 / SIMTech
+- **dir_ime** — 微电子研究所
+- **dir_ihpc** — 高性能计算研究所
+- **dir_imre** — 材料研究与工程研究所
+- **dir_isce2** — 化学、能源与环境可持续发展研究所
+- **dir_i2r** — 资讯通信研究所
+- **dir_nmc** — 国家计量中心
 
 ### 国家中心
-- **dir_ai_coe** — Dr Wang Wei（制造业 AI 卓越中心）
-- **dir_nscc** — Dr Terence Hung（国家超级计算中心）
-- **dir_eddc** — Prof Damian O'Connell（实验药物研发中心）
-- **dir_catos** — Dr Yang Yinping（在线安全先进技术中心）
+- **dir_ai_coe** — 制造业 AI 卓越中心
+- **dir_nscc** — 国家超级计算中心
+- **dir_eddc** — 实验药物研发中心
+- **dir_catos** — 在线安全先进技术中心
 
 ### 外部
 - **user_liaison** — 你的个人 AI 联络代理，负责向 A*STAR 组织交付任务
+
+## Author
+
+Dr. Xinyu Yang from A*STAR (yang_xinyu@a-star.edu.sg)

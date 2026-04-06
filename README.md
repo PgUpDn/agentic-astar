@@ -134,44 +134,48 @@ All settings via `.env`:
 ## Agent list
 
 ### Board & Executive
-- **chairman** — Prof Tan Chorh Chuan (Board Chairman)
-- **ceo** — Mr Beh Kian Teik (CEO)
+- **chairman** — Board Chairman
+- **ceo** — CEO
 
 ### Deputy / Assistant Chief Executives
-- **dce_research** — Prof Andy Hor (DCE Research)
-- **dce_ie** — Prof Yeo Yee Chia (DCE Innovation & Enterprise)
-- **dce_corporate** — Mr Suresh Sachi (DCE Corporate & General Counsel)
-- **ace_bmrc** — Dr Lisa Ooi (ACE Biomedical Research Council)
-- **ace_serc** — Prof Lim Keng Hui (ACE Science & Engineering Research Council)
-- **ace_ie** — Ms Irene Cheong (ACE I&E / Graduate Academy)
-- **ace_corp_dev** — Mr Glen Tan (ACE Corporate Development)
-- **ace_infra** — Mr Haryanto Tan (ACE Infrastructure)
+- **dce_research** — DCE Research
+- **dce_ie** — DCE Innovation & Enterprise
+- **dce_corporate** — DCE Corporate & General Counsel
+- **ace_bmrc** — ACE Biomedical Research Council
+- **ace_serc** — ACE Science & Engineering Research Council
+- **ace_ie** — ACE I&E / Graduate Academy
+- **ace_corp_dev** — ACE Corporate Development
+- **ace_infra** — ACE Infrastructure
 
 ### BMRC Research Institutes
-- **dir_bii** — Dr Sebastian Maurer-Stroh (Bioinformatics Institute)
-- **dir_bti** — Dr Koh Boon Tong (Bioprocessing Technology Institute)
-- **dir_gis** — Dr Wan Yue (Genome Institute of Singapore)
-- **dir_idl** — Prof Lisa Ng (Infectious Diseases Labs)
-- **dir_ihdp** — Prof Johan Eriksson (Institute for Human Development & Potential)
-- **dir_imcb** — A/Prof Su Xinyi (Institute of Molecular & Cell Biology)
-- **dir_sign** — Prof Lam Kong Peng (Singapore Immunology Network)
-- **dir_sifbi** — Dr Sze Cotte-Tan (Singapore Inst. of Food & Biotech Innovation)
-- **dir_srl** — Prof Rachel Watson (Skin Research Labs)
+- **dir_bii** — Bioinformatics Institute
+- **dir_bti** — Bioprocessing Technology Institute
+- **dir_gis** — Genome Institute of Singapore
+- **dir_idl** — Infectious Diseases Labs
+- **dir_ihdp** — Institute for Human Development & Potential
+- **dir_imcb** — Institute of Molecular & Cell Biology
+- **dir_sign** — Singapore Immunology Network
+- **dir_sifbi** — Singapore Inst. of Food & Biotech Innovation
+- **dir_srl** — Skin Research Labs
 
 ### SERC Research Institutes
-- **dir_artc** — Dr David Low (ARTC / SIMTech)
-- **dir_ime** — Mr Terence Gan (Institute of Microelectronics)
-- **dir_ihpc** — Dr Su Yi (Institute of High Performance Computing)
-- **dir_imre** — Prof Loh Xian Jun (Institute of Materials Research & Engineering)
-- **dir_isce2** — Prof Reginald Tan (ISCE2 — Sustainability)
-- **dir_i2r** — Dr Sun Sumei (Institute for Infocomm Research)
-- **dir_nmc** — Prof Gregory Goh (National Metrology Centre)
+- **dir_artc** — ARTC / SIMTech
+- **dir_ime** — Institute of Microelectronics
+- **dir_ihpc** — Institute of High Performance Computing
+- **dir_imre** — Institute of Materials Research & Engineering
+- **dir_isce2** — ISCE2 — Sustainability
+- **dir_i2r** — Institute for Infocomm Research
+- **dir_nmc** — National Metrology Centre
 
 ### National Centres
-- **dir_ai_coe** — Dr Wang Wei (AI Centre of Excellence for Manufacturing)
-- **dir_nscc** — Dr Terence Hung (National Supercomputing Centre)
-- **dir_eddc** — Prof Damian O'Connell (Experimental Drug Development Centre)
-- **dir_catos** — Dr Yang Yinping (Centre for Advanced Technologies in Online Safety)
+- **dir_ai_coe** — AI Centre of Excellence for Manufacturing
+- **dir_nscc** — National Supercomputing Centre
+- **dir_eddc** — Experimental Drug Development Centre
+- **dir_catos** — Centre for Advanced Technologies in Online Safety
 
 ### External
 - **user_liaison** — Your personal AI agent for delivering tasks to A*STAR
+
+## Author
+
+Dr. Xinyu Yang from A*STAR (yang_xinyu@a-star.edu.sg)
