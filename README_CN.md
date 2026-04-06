@@ -96,6 +96,15 @@ uv run astar-sim
 
 若仓库为公开或密钥曾泄露，请在各平台轮换 API Key。
 
+## 验证
+
+推送到 GitHub 之前，建议先在本地跑一轮基础检查：
+
+```bash
+uv run python -m compileall src
+uv run python -m unittest discover -s tests -v
+```
+
 ## 如何交付任务
 
 在 **#task-inbox** 频道直接输入你的需求，例如：

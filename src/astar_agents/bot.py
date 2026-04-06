@@ -23,6 +23,7 @@ import asyncio
 import logging
 import random
 import re
+from datetime import datetime, timezone
 from typing import TYPE_CHECKING
 
 import discord
@@ -30,8 +31,8 @@ from discord.ext import commands, tasks
 
 from .agent import Agent
 from .config import settings
-from .models import Envelope, Priority, Task, TaskStatus
-from .registry import AGENT_PROFILES, channel_memberships
+from .models import Envelope, Priority, TaskStatus
+from .registry import AGENT_PROFILES
 from .router import Router
 
 if TYPE_CHECKING:
@@ -187,7 +188,7 @@ class AStarBot(commands.Bot):
 
     @tasks.loop(seconds=30)
     async def tick_loop(self) -> None:
-        """Process pending envelopes — post replies to Discord only, no new envelopes."""
+        """Process pending envelopes, post replies, and forward delegations."""
         await self._ready_event.wait()
         self.tick_loop.change_interval(seconds=settings.tick_interval)
 
@@ -198,6 +199,7 @@ class AStarBot(commands.Bot):
                 results = await agent.process_mailbox()
                 for env, reply in results:
                     await self._post_reply(agent, env, reply)
+                    await self._dispatch_delegations(agent, env, reply)
             except Exception:
                 log.exception("tick error for agent %s", agent.id)
 
@@ -214,6 +216,58 @@ class AStarBot(commands.Bot):
         embed.set_author(name=f"{agent.profile.name} replies")
         embed.set_footer(text=f"re: {original.subject}")
         await chan.send(embed=embed)
+
+    async def _dispatch_delegations(self, agent: Agent, original: Envelope, reply: str) -> None:
+        delegations = agent.parse_delegations(reply)
+        if not delegations:
+            return
+
+        valid_targets = [target for target, _ in delegations if target in self.agents]
+        task_id = self._extract_task_id(original.body)
+        if task_id:
+            task = self.router.get_task(task_id)
+            if task is not None:
+                history = list(task.history)
+                history.append(
+                    f"{agent.id} delegated to {', '.join(valid_targets) if valid_targets else 'unknown recipients'}"
+                )
+                fields: dict[str, object] = {
+                    "updated_at": datetime.now(timezone.utc),
+                    "history": history,
+                }
+                if valid_targets:
+                    fields["status"] = TaskStatus.ASSIGNED
+                if len(valid_targets) == 1:
+                    fields["assigned_to"] = valid_targets[0]
+                self.router.update_task(task_id, **fields)
+
+        for target, instruction in delegations:
+            if target not in self.agents:
+                log.warning("[%s] delegation target does not exist: %s", agent.id, target)
+                continue
+
+            task_line = f"Task ID: {task_id}\n" if task_id else ""
+            delegated_body = (
+                f"Delegated by: {agent.profile.name} ({agent.id})\n"
+                f"Original sender: {original.from_agent}\n"
+                f"Original subject: {original.subject}\n"
+                f"{task_line}"
+                f"---\n{instruction}\n---"
+            )
+            await agent.send_mail(
+                to=target,
+                subject=f"Delegated: {original.subject}" if original.subject else "Delegated request",
+                body=delegated_body,
+                priority=original.priority,
+                reply_to=original.envelope_id,
+            )
+
+    @staticmethod
+    def _extract_task_id(body: str) -> str | None:
+        match = re.search(r"Task ID:\s*([A-Za-z0-9_-]+)", body)
+        if match:
+            return match.group(1)
+        return None
 
     # ==================================================================
     # Autopilot — continuous autonomous discussions

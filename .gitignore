@@ -8,8 +8,13 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .eggs/
+.coverage
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
 build/
 dist/
+htmlcov/
 wheels/
 *.egg
 

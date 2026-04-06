@@ -99,6 +99,15 @@ uv run astar-sim
 
 If this repository is public, rotate any API keys that were previously pasted into chat or committed by mistake.
 
+## Verification
+
+Run a quick local check before pushing changes:
+
+```bash
+uv run python -m compileall src
+uv run python -m unittest discover -s tests -v
+```
+
 ## Delivering a task
 
 Just type your request in **#task-inbox**:
