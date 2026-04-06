@@ -126,7 +126,7 @@ All settings via `.env`:
 | `DISCORD_GUILD_ID` | 0 | Server ID |
 | `OPENAI_API_KEY` | — | LLM API key |
 | `OPENAI_BASE_URL` | `https://api.openai.com/v1` | API endpoint |
-| `OPENAI_MODEL` | `gpt-4o-mini` | Model name |
+| `OPENAI_MODEL` | `gpt-xx` | Model name |
 | `TICK_INTERVAL` | 30 | Seconds between mailbox checks |
 | `MAX_MEMORY` | 50 | Messages per agent memory |
 | `AGENT_COOLDOWN` | 5 | Min seconds between LLM calls |
