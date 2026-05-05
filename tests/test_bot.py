@@ -3,7 +3,7 @@ from __future__ import annotations
 import unittest
 
 from astar_agents.agent import Agent
-from astar_agents.bot import create_bot
+from astar_agents.bot import TaskCog, create_bot
 from astar_agents.models import Envelope, Task, TaskStatus
 from astar_agents.registry import AGENT_PROFILES
 
@@ -66,5 +66,26 @@ class BotTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(updated_task.assigned_to, receiver.id)
         self.assertEqual(updated_task.status, TaskStatus.ASSIGNED)
         self.assertTrue(updated_task.history)
+
+        await bot.close()
+
+    async def test_roundtable_uses_agents_assigned_to_current_channel(self) -> None:
+        bot = create_bot()
+        bot._spawn_agents()
+        cog = TaskCog(bot)
+
+        self.assertEqual(
+            cog._agent_ids_for_channel("serc-council"),
+            [
+                "ace_serc",
+                "dir_artc",
+                "dir_ime",
+                "dir_ihpc",
+                "dir_imre",
+                "dir_isce2",
+                "dir_i2r",
+                "dir_nmc",
+            ],
+        )
 
         await bot.close()

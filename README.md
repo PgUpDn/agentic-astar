@@ -31,7 +31,7 @@ You (user)
 | Public channels | Division channels (`#bmrc-council`, `#serc-council`, …) for observable inter-agent discussion |
 | Envelope system | `Envelope` model routed through `Router` — every message is logged to Discord |
 | Task delivery | User posts in `#task-inbox` → Liaison analyses → CEO delegates down the hierarchy |
-| Roundtable | `!roundtable <topic>` triggers a council discussion among executives |
+| Roundtable | `!roundtable <topic>` triggers a discussion among agents assigned to the current channel |
 
 ## Quick start
 
@@ -81,7 +81,7 @@ On first run the bot will auto-create all channels under two categories: **A\*ST
 | `!org` | Show the org-chart hierarchy |
 | `!tasks` | List all tracked tasks |
 | `!mail <agent_id> <message>` | Send a direct envelope to any agent |
-| `!roundtable <topic>` | Start an executive roundtable discussion |
+| `!roundtable <topic>` | Start a roundtable discussion in the current channel |
 | `!status` | Show simulation status |
 | `!autopilot on` / `!autopilot off` | Continuous autonomous council discussions |
 

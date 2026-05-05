@@ -31,7 +31,7 @@
 | 公开频道 | 按部门划分（`#bmrc-council`、`#serc-council` 等），用于观察 Agent 间交流 |
 | 信封系统 | `Envelope` 消息模型，通过 `Router` 路由 —— 每条消息自动记录到 Discord |
 | 任务交付 | 用户在 `#task-inbox` 发消息 → Liaison 分析 → CEO 委派 → 逐级下发 |
-| 圆桌讨论 | `!roundtable <主题>` 触发高管层集体讨论 |
+| 圆桌讨论 | `!roundtable <主题>` 触发当前频道所属 Agent 的圆桌讨论 |
 
 ## 快速开始
 
@@ -80,7 +80,7 @@ uv run astar-sim
 | `!org` | 显示组织架构层级 |
 | `!tasks` | 列出所有任务 |
 | `!mail <agent_id> <消息>` | 直接给任意 Agent 发送信封 |
-| `!roundtable <主题>` | 发起高管圆桌讨论 |
+| `!roundtable <主题>` | 在当前频道发起圆桌讨论 |
 | `!status` | 查看模拟系统状态 |
 | `!autopilot on` / `!autopilot off` | 开启或关闭持续自治讨论 |
 

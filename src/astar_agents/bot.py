@@ -542,7 +542,7 @@ class TaskCog(commands.Cog):
 
     @commands.command(name="roundtable")
     async def roundtable(self, ctx: commands.Context, *, args: str) -> None:
-        """Roundtable discussion. Usage: !roundtable <topic> or !roundtable <topic> --invite agent1 agent2"""
+        """Roundtable discussion in the current channel."""
         # Parse --invite flag
         invite_ids: list[str] = []
         topic = args
@@ -551,25 +551,48 @@ class TaskCog(commands.Cog):
             topic = parts[0].strip()
             invite_ids = parts[1].strip().split()
 
-        default_council = ["ceo", "dce_research", "dce_ie", "dce_corporate",
-                           "ace_bmrc", "ace_serc"]
-        participants = list(dict.fromkeys(default_council + invite_ids))
+        channel_name = ctx.channel.name
+        channel_agent_ids = self._agent_ids_for_channel(channel_name)
+        if invite_ids:
+            requested_ids = list(dict.fromkeys(invite_ids))
+            participants = [aid for aid in requested_ids if aid in channel_agent_ids]
+            ignored_ids = [aid for aid in requested_ids if aid not in channel_agent_ids]
+        else:
+            participants = channel_agent_ids
+            ignored_ids = []
+
+        if not participants:
+            await ctx.send(
+                f"No roundtable agents are assigned to `#{channel_name}`."
+            )
+            return
 
         names = []
         for aid in participants:
             p = AGENT_PROFILES.get(aid)
             names.append(f"`{aid}` ({p.name})" if p else f"`{aid}`")
 
+        description = (
+            f"Channel: `#{channel_name}`\n"
+            f"Inviting {len(participants)} participant(s):\n"
+            + ", ".join(names)
+        )
+        if ignored_ids:
+            description += (
+                "\n\nIgnored because they do not belong to this channel: "
+                + ", ".join(f"`{aid}`" for aid in ignored_ids)
+            )
+
         await ctx.send(
             embed=discord.Embed(
                 title=f"🏛️ Roundtable: {topic}",
-                description=f"Inviting {len(participants)} participants:\n" + ", ".join(names),
+                description=description,
                 color=discord.Color.purple(),
             )
         )
 
         conversation = ""
-        chan = self._get_channel(ctx, "executive-council") or ctx.channel
+        chan = ctx.channel
         for aid in participants:
             agent = self.bot.agents.get(aid)
             if not agent:
@@ -593,6 +616,21 @@ class TaskCog(commands.Cog):
                 ).set_author(name=f"🎙️ {agent.profile.name} ({agent.profile.title})")
             )
             conversation += f"{agent.profile.name}: {reply}\n\n"
+
+    def _agent_ids_for_channel(self, channel_name: str) -> list[str]:
+        agent_ids = [
+            profile.agent_id
+            for profile in AGENT_PROFILES.values()
+            if profile.discord_channel == channel_name and profile.agent_id in self.bot.agents
+        ]
+        if agent_ids:
+            return agent_ids
+
+        return [
+            profile.agent_id
+            for profile in AGENT_PROFILES.values()
+            if profile.private_channel == channel_name and profile.agent_id in self.bot.agents
+        ]
 
     @commands.command(name="autopilot")
     async def autopilot(self, ctx: commands.Context, action: str = "on") -> None:
